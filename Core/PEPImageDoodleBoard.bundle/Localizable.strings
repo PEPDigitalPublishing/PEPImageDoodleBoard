@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  PEPImageDoodleBoard
+
+  Created by 李沛倬 on 2019/9/12.
+  Copyright © 2019 peizhuo. All rights reserved.
+*/
+
+
+"ok" = "好的";
+
+"tips" = "提示";
+
+"cancel" = "取消";
+
+"album" = "相册";
+
+"goto_setting" = "去设置";
+
+"camera_authorization_limit" = "当前没有摄像头权限，请在设置中打开相机权限";
+
+"capture_photo_failed" = "拍照失败!";
+
+"no_need_to_clear" = "该图片没有任何标注，无需清除！";
+
+"add_photo_limit" = "最多只能添加#张照片哦！";
+
+"all_clear" = "清除所有";
+
+"all_clear_tips_message" = "确定要清除所有标注内容？";
