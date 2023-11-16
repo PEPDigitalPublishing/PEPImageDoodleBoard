@@ -607,19 +607,19 @@ typedef NS_ENUM(NSUInteger, PEPImageDoodleToolBarItemType) {
     backView.backgroundColor= UIColor.blackColor;
     backView.userInteractionEnabled = YES;
     
-    UIButton *closeButton = [self standardButtonWithTitle:nil image:[UIImage imageNamed:@"pb_toolbar_close" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] action:@selector(toolBarItemAction:)];
+    UIButton *closeButton = [self standardButtonWithTitle:nil image:[UIImage imageNamed:@"pb_toolbar_close@2x.png" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] selectImage:nil action:@selector(toolBarItemAction:)];
     closeButton.frame = CGRectMake(10, 20, 40, 40);
-    UIButton *brushButton = [self standardButtonWithTitle:nil image:[UIImage imageNamed:@"pb_toolbar_brush" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] action:@selector(toolBarItemAction:)];
+    UIButton *brushButton = [self standardButtonWithTitle:nil image:[UIImage imageNamed:@"pb_toolbar_brush@2x.png" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] selectImage:[UIImage imageNamed:@"pb_toolbar_brush_select@2x.png" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] action:@selector(toolBarItemAction:)];
     brushButton.frame = CGRectMake(10,10+40+20, 40, 40);
-//    UIButton *eraserButton = [self standardButtonWithTitle:nil image:[UIImage imageNamed:@"pb_toolbar_eraser" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] action:@selector(toolBarItemAction:)];
-    UIButton *clearButton = [self standardButtonWithTitle:nil image:[UIImage imageNamed:@"pb_toolbar_clear" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] action:@selector(toolBarItemAction:)];
+    brushButton.selected = NO;
+
+    UIButton *clearButton = [self standardButtonWithTitle:nil image:[UIImage imageNamed:@"pb_toolbar_clear@2x.png" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] selectImage:nil action:@selector(toolBarItemAction:)];
     clearButton.frame = CGRectMake(10, 20+(40+10)*2, 40, 40);
-//    UIButton *addButton = [self standardButtonWithTitle:nil image:[UIImage imageNamed:@"pb_toolbar_add" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] action:@selector(toolBarItemAction:)];
-    UIButton *enlargeButton = [self standardButtonWithTitle:nil image:[UIImage imageNamed:@"pb_toolbar_enlarge" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] action:@selector(toolBarItemAction:)];
+    UIButton *enlargeButton = [self standardButtonWithTitle:nil image:[UIImage imageNamed:@"pb_toolbar_enlarge@2x.png" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] selectImage:nil action:@selector(toolBarItemAction:)];
     enlargeButton.frame = CGRectMake(10,20+(40+10)*3, 40, 40);
-    UIButton *lessenButton = [self standardButtonWithTitle:nil image:[UIImage imageNamed:@"pb_toolbar_lessen" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] action:@selector(toolBarItemAction:)];
+    UIButton *lessenButton = [self standardButtonWithTitle:nil image:[UIImage imageNamed:@"pb_toolbar_lessen@2x.png" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] selectImage:nil action:@selector(toolBarItemAction:)];
     lessenButton.frame = CGRectMake(10,20+(40+10)*4, 40, 40);
-    UIButton *rotateButton = [self standardButtonWithTitle:nil image:[UIImage imageNamed:@"pb_toolbar_rotation" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] action:@selector(toolBarItemAction:)];
+    UIButton *rotateButton = [self standardButtonWithTitle:nil image:[UIImage imageNamed:@"pb_toolbar_rotation@2x.png" inBundle:PEPImageDoodleAssetsBundle() compatibleWithTraitCollection:nil] selectImage:nil action:@selector(toolBarItemAction:)];
     rotateButton.frame = CGRectMake(10,20+(40+10)*5, 40, 40);
     
     closeButton.tag = PEPImageDoodleToolBarItemTypeClose;
@@ -679,10 +679,11 @@ typedef NS_ENUM(NSUInteger, PEPImageDoodleToolBarItemType) {
 }
 
 
-- (UIButton *)standardButtonWithTitle:(NSString *)title image:(UIImage *)image action:(SEL)sel {
+- (UIButton *)standardButtonWithTitle:(NSString *)title image:(UIImage *)image selectImage:(UIImage *)sel_image action:(SEL)sel {
     UIButton *button = [[UIButton alloc]  init];
     [button setTitle:title forState:UIControlStateNormal];
     [button setImage:image forState:UIControlStateNormal];
+    [button setImage:sel_image forState:UIControlStateSelected];
     [button addTarget:self action:sel forControlEvents:UIControlEventTouchUpInside];
     button.titleLabel.font = [UIFont systemFontOfSize:18];
     
